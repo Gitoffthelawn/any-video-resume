@@ -10,7 +10,7 @@
     "content_scripts": [
       {
         "matches": ["https://*/*"],
-        "js": ["./js/content.js"],
+        "js": ["./js/storage.js","./js/video.js","./js/content.js"],
         "run_at": "document_end"
       }
     ],
