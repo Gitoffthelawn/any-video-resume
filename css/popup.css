@@ -1,0 +1,106 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html, body {
+    width:300px;
+    margin:0;
+    padding:0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.container {
+    border: 5px solid #bc1919;
+    text-align: center;
+    padding:10px;
+}
+
+small {
+    display:block;
+    margin-top:10px;
+    color:#C0C0C0;
+    font-size:80%;
+}
+
+ul.menu {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    line-height:1.2em;
+}
+
+
+.menu li {
+    font-size:80%;
+    background:#f0f0f0;
+    margin:5px;
+    border-radius:6px;
+    overflow: hidden;
+    flex-grow: 1;
+    font-weight:bold;
+}
+
+.menu li:not(.button) {
+    padding:10px 15px;
+}
+
+.menu a {
+    display:block;
+    padding:10px 15px;
+    color: #bc1919;
+    text-decoration: none;
+}
+
+.menu a:hover, a:active {
+    background:#bc1919;
+    color:#fff;
+}

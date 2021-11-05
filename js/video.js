@@ -1,5 +1,6 @@
-const MIN_VIDEO_LENGTH_SECONDS = 10 // min 10 seconds
+const MIN_VIDEO_LENGTH_SECONDS = 30 // min 10 seconds
 const MAX_VIDEO_LENGTH_SECONDS = 86400 // max 24h
+const END_VIDEO_SECONDS = 30 // 30 seconds
 
 class VideoObject
 {
@@ -7,7 +8,7 @@ class VideoObject
     url
     index
 
-    static init(video, index)
+    static init(current_video, index)
     {
         VideoObject.title = document.title
         VideoObject.url = window.location.href
@@ -19,14 +20,19 @@ class VideoObject
             let videoObj = data[hash]
             if (videoObj) {
                 VideoObject.duration = videoObj.duration
-                VideoObject.currentTime = (video.duration >= MIN_VIDEO_LENGTH_SECONDS && video.duration <= MAX_VIDEO_LENGTH_SECONDS && video.duration >= videoObj.duration) ? parseFloat(videoObj.currentTime) : 0
+                VideoObject.currentTime =   ( 
+                                            current_video.duration >= MIN_VIDEO_LENGTH_SECONDS // Video minimum length
+                                            && current_video.duration <= MAX_VIDEO_LENGTH_SECONDS // Video maximal length (for live videos)
+                                            && current_video.currentTime <= (videoObj.duration - END_VIDEO_SECONDS) // Current length is lower than 30 seconds from end
+                                            && videoObj.url == videoObj.url
+                                            ) ? parseFloat(videoObj.currentTime) : 0
             } else {
-                VideoObject.duration = video.duration
+                VideoObject.duration = current_video.duration
                 VideoObject.currentTime = 0
             }
 
             // Init video...
-            video.currentTime = VideoObject.currentTime
+            current_video.currentTime = VideoObject.currentTime
         })
     }
 
@@ -61,7 +67,7 @@ class VideoObject
         }
 
         Storage.save({[VideoObject.getHash()]:VideoObject.getObject()}, _ => {
-            console.log("Save time...", VideoObject.currentTime)
+            //console.log("Save time...", VideoObject.currentTime)
         })
     }
     

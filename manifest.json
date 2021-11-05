@@ -1,19 +1,23 @@
 {
 
     "manifest_version": 2,
-    "name": "Video Resumer",
+    "name": "Any Video Resume",
     "version": "1.0",
-    "description": "Return to last time you stopped the video.",
+    "description": "Return to last time you stopped any video.",
     "icons": {
       "48": "icons/logo-48.png"
     },
     "content_scripts": [
       {
         "matches": ["https://*/*"],
-        "js": ["./js/storage.js","./js/video.js","./js/content.js"],
+        "js": ["./js/storage.js","./js/video.js","./js/content.js","./js/popup.js"],
         "run_at": "document_end"
       }
     ],
+    "browser_action": {
+      "default_icon": "icons/logo-48.png",
+      "default_popup": "./html/popup.html"
+    },
     "permissions": [
         "storage"
     ]

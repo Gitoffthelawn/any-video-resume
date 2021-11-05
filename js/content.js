@@ -5,7 +5,6 @@
     Storage.listAll()
 
     window.addEventListener('load',async _ => {
-        console.log("Listen for videos...")
         let video = document.querySelector('video')
         if (!video) {
             let i = 1;
@@ -17,7 +16,6 @@
             if (!video) return
         }
         trackVideo()
-        //video.addEventListener('durationchange', trackVideo)
         video.addEventListener('loadedmetadata', trackVideo)
     })
 
