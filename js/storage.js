@@ -52,7 +52,7 @@ class Storage
         browserAPI.storage.local.get(null, all => {
             let keys = Object.keys(all).filter(k => k.startsWith('video-resumer'))
             browserAPI.storage.local.get(keys, (data) => {
-                return callback(data)
+                callback(data)
             })
         })
     }
