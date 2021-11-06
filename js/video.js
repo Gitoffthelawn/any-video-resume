@@ -4,10 +4,6 @@ const END_VIDEO_SECONDS = 30 // 30 seconds
 
 class VideoObject
 {
-    title
-    url
-    index
-
     static init(current_video, index)
     {
         VideoObject.title = document.title
