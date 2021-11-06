@@ -1,4 +1,6 @@
 # Any Video Resumer (HTML5)
+![Chrome Uses](https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users) ![FireFox Uses](https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange) ![Version](https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl) ![Version](https://img.shields.io/amo/v/any-video-resume) 
+
 An extension für Chrome, FireFox and Edge, that continues your video where you stoped watch it. The length of the video have to be more than **30 seconds**.
 
 # Installation
