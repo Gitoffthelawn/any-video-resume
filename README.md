@@ -1,18 +1,24 @@
+![Logo](https://www.bit01.de/wp-content/uploads/2021/11/Logo.png)
+
 # Any Video Resumer (HTML5)
 ![Chrome Uses](https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users) ![FireFox Uses](https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange) ![Version](https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl) ![Version](https://img.shields.io/amo/v/any-video-resume) 
 
 An extension für Chrome, FireFox and Edge, that continues your video where you stoped watch it. The length of the video have to be more than **30 seconds**.
 
+## Screenshot
+
+<img src="https://www.bit01.de/wp-content/uploads/2021/11/Banner_Gross.png" width="500" />
+
 # Installation
 
 ## FireFox
 
-1. Go to FireFox Addon page and activate it
+1. Go to [FireFox Addon](https://addons.mozilla.org/de/firefox/addon/any-video-resume/) page and activate it
 2. Thats all, now you can use the extension.
 
 ## Chrome/Edge: 
 
-1. Go to the Chrome store page and activate it
+1. Go to the [Chrome store](https://chrome.google.com/webstore/detail/nlbiijlalckdjibflknamcbhonniglkl) page and activate it
 2. Thats all, now you can use the extension.
 
 ## Manual installation
