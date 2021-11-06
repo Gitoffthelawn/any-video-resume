@@ -8,9 +8,15 @@
 
 An extension für Chrome, FireFox and Edge, that continues your video where you stoped watch it. The length of the video have to be more than **30 seconds**.
 
-## Explanation
+<img align="right" src="https://www.bit01.de/wp-content/uploads/2021/11/Banner_Gross.png" width="300" />
 
-<img src="https://www.bit01.de/wp-content/uploads/2021/11/Banner_Gross.png" width="500" />
+* [YouTube](https://www.youtube.com/watch?v=Hc6gCU-bq-Q) same video on [Youtube Playlist](https://www.youtube.com/watch?v=Hc6gCU-bq-Q&list=PLQoEXblyEqhAl_KVJZzp3_V8VG-iSKVPs&index=13)
+* [ARD](https://www.ardmediathek.de/video/hessenschau-extra/querdenker-demo-in-kassel/hr-fernsehen/Y3JpZDovL2hyLW9ubGluZS8xMzA2NTk/)
+* [ZDF](https://www.zdf.de/serien/tod-von-freunden/tod-von-freunden-darum-geht-es-100.html)
+* [Vimeo](https://vimeo.com/259411563)
+* [Twitch](https://www.twitch.tv/videos/981250660)
+* Any HTML5 video
+* ...
 
 # Installation
 
@@ -28,15 +34,6 @@ An extension für Chrome, FireFox and Edge, that continues your video where you 
 
 1. Download zip or xpi file
 2. Upload it to your browser und activate  it.
-
-# Tested video plattforms
-* [YouTube](https://www.youtube.com/watch?v=Hc6gCU-bq-Q) same video on [Youtube Playlist](https://www.youtube.com/watch?v=Hc6gCU-bq-Q&list=PLQoEXblyEqhAl_KVJZzp3_V8VG-iSKVPs&index=13)
-* [ARD](https://www.ardmediathek.de/video/hessenschau-extra/querdenker-demo-in-kassel/hr-fernsehen/Y3JpZDovL2hyLW9ubGluZS8xMzA2NTk/)
-* [ZDF](https://www.zdf.de/serien/tod-von-freunden/tod-von-freunden-darum-geht-es-100.html)
-* [Vimeo](https://vimeo.com/259411563)
-* [Twitch](https://www.twitch.tv/videos/981250660)
-* Any HTML5 video
-* ...
 
 ## Any missing plattform?
 
