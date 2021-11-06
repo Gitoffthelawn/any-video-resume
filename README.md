@@ -32,7 +32,3 @@ An extension für Chrome, FireFox and Edge, that continues your video where you 
 ## Any missing plattform?
 
 Feel free to [contact me](https://www.bit01.de/kontakt/) or make an feature request.
-
-## Automated tests
-
-*TODO:* Automated tests with [Selenium](https://www.selenium.dev/selenium/docs/api/javascript/index.html).
