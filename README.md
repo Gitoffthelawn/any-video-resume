@@ -3,12 +3,12 @@
 </p>
 
 <p align="center">
-<img src0"https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users"><img src="https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange"><img src="https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl"><img src="https://img.shields.io/amo/v/any-video-resume">
+<img src="https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users"><img src="https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange"><img src="https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl"><img src="https://img.shields.io/amo/v/any-video-resume">
 </p>
 
 An extension für Chrome, FireFox and Edge, that continues your video where you stoped watch it. The length of the video have to be more than **30 seconds**.
 
-<img align="right" src="https://www.bit01.de/wp-content/uploads/2021/11/Banner_Gross.png" width="300" />
+<img align="right" src="https://www.bit01.de/wp-content/uploads/2021/11/Banner_Gross.png" width="280" />
 
 * [YouTube](https://www.youtube.com/watch?v=Hc6gCU-bq-Q) same video on [Youtube Playlist](https://www.youtube.com/watch?v=Hc6gCU-bq-Q&list=PLQoEXblyEqhAl_KVJZzp3_V8VG-iSKVPs&index=13)
 * [ARD](https://www.ardmediathek.de/video/hessenschau-extra/querdenker-demo-in-kassel/hr-fernsehen/Y3JpZDovL2hyLW9ubGluZS8xMzA2NTk/)
