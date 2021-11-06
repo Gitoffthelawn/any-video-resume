@@ -1,11 +1,14 @@
-![Logo](https://www.bit01.de/wp-content/uploads/2021/11/Logo.png)
+<p align="center">
+<img src="https://www.bit01.de/wp-content/uploads/2021/11/Logo_trans.png" height="150" />
+</p>
 
-# Any Video Resumer (HTML5)
-![Chrome Uses](https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users) ![FireFox Uses](https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange) ![Version](https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl) ![Version](https://img.shields.io/amo/v/any-video-resume) 
+<p align="center">
+<img src0"https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users"><img src="https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange"><img src="https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl"><img src="https://img.shields.io/amo/v/any-video-resume">
+</p>
 
 An extension für Chrome, FireFox and Edge, that continues your video where you stoped watch it. The length of the video have to be more than **30 seconds**.
 
-## Screenshot
+## Explanation
 
 <img src="https://www.bit01.de/wp-content/uploads/2021/11/Banner_Gross.png" width="500" />
 
