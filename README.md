@@ -1,4 +1,4 @@
-# Video Resumer (HTML5)
+# Any Video Resumer (HTML5)
 An extension für Chrome, FireFox and Edge, that continues your video where you stoped watch it. The length of the video have to be more than **30 seconds**.
 
 # Installation
