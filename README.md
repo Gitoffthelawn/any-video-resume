@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-<img src="https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users"><img src="https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange"><img src="https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl"><img src="https://img.shields.io/amo/v/any-video-resume">
+<img src="https://img.shields.io/chrome-web-store/users/nlbiijlalckdjibflknamcbhonniglkl?label=chrome%20users"> <img src="https://img.shields.io/amo/users/any-video-resume?label=firefox%20users&logoColor=orange"> <img src="https://img.shields.io/chrome-web-store/v/nlbiijlalckdjibflknamcbhonniglkl"> <img src="https://img.shields.io/amo/v/any-video-resume">
 </p>
 
 An extension für Chrome, FireFox and Edge, that continues your video where you stoped watch it. The length of the video have to be more than **30 seconds**.
