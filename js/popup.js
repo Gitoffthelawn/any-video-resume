@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    Storage.listAll((data) => {
-        //console.log(data)
+    Storage.listAll().then((data) => {
         document.querySelector('#count_videos').innerHTML = Object.keys(data).length
     })
     
