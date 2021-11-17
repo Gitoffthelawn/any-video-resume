@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 video_list_dom.innerHTML += (`
                                             <li>
                                                 <span class="progress" style="width:${percent}%"></span>
-                                                <span class="label">
-                                                    <a href="${video.url}" target="_blank">${video.title}</a>
-                                                </span>
+                                                <a href="${video.url}" target="_blank">${video.title}</a>
                                             </li>`
                                             )
             })

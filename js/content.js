@@ -13,6 +13,10 @@
             video = await checkforVideo(i*500) // wait every time n*500ms
         }
 
+        // change video DOM async with ajax...
+        // listener for such updates -> trackVideo again...
+        video.addEventListener('loadedmetadata', trackVideo)
+
         // Skip if no video found or dismiss rules...
         if (video == null || video.duration <= MIN_VIDEO_LENGTH_SECONDS
             || video.duration >= MAX_VIDEO_LENGTH_SECONDS
@@ -24,12 +28,6 @@
         Video.init(video)
         video.addEventListener('timeupdate', _ => {
             Video.updateTime(video)
-        })
-
-        // change with ajax... do initiation again (start and video object)
-        // Listener for update can be the same...
-        video.addEventListener('loadedmetadata', _ => {
-            Video.init(video)
         })
     }
     
@@ -54,6 +52,5 @@
     }
 
     window.addEventListener('load', trackVideo)
-
     
 })();

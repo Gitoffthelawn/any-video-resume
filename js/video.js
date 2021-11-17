@@ -14,7 +14,7 @@ class Video
         
         Video.title = document.title
         Video.url = window.location.href
-        Video.duration = current_video.duration
+        Video.duration = (current_video.duration >= Video.duration) ? current_video.duration : Video.duration
 
         let hash = Video.getHash()
 
@@ -71,11 +71,10 @@ class Video
      */
     static updateTime(video)
     {
-        if (video.currentTime > 0) {
+        if (video.duration >= Video.currentTime) {
             Video.currentTime = video.currentTime
-            Storage.save({[Video.getHash()]:Video.getObject()}, _ => {
-                console.log(Video.getObject())
-            })
+            Video.duration = video.duration
+            Storage.save({[Video.getHash()]:Video.getObject()}, _ => {})
         }
     }
     

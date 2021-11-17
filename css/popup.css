@@ -124,11 +124,6 @@ ul#video_history li {
     border-radius:5px;
 }
 
-ul#video_history li span.label {
-    position: relative;
-    z-index:999;
-}
-
 ul#video_history li span.progress {
     z-index:0;
     height:100%;
@@ -142,6 +137,9 @@ ul#video_history li span.progress {
 #video_history a, #video_history a:active, #video_history a:visited, #video_history a:hover {
     color:inherit;
     text-decoration: none;
+    display:block;
+    position: relative;
+    z-index:999;
 }
 
 .empty {
