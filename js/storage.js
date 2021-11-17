@@ -1,5 +1,5 @@
 const CACHE_DURATION = 365 * 24 * 3600 * 1000 // 365 days
-const MIN_VIDEO_LENGTH_SECONDS = 30 // min 10 seconds
+const MIN_VIDEO_LENGTH_SECONDS = 60 // min 1 minute
 const MAX_VIDEO_LENGTH_SECONDS = 86400 // max 24h
 
 const browserAPI = (typeof browser !== 'undefined') ? browser : chrome
