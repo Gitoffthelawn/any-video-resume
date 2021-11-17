@@ -2,7 +2,7 @@
 
     "manifest_version": 2,
     "name": "Any Video Resume",
-    "version": "1.0",
+    "version": "1.1.0",
     "description": "Return to last time you stopped any video.",
     "icons": {
       "48": "icons/logo-48.png"

@@ -1,24 +1,38 @@
 (function() {
     "use strict";
 
-    //Storage.cleanAll()
-    Storage.listAll()
+    /**
+     * 
+     * @returns 
+     */
+    let trackVideo = async _ => {
+        let video = await checkforVideo(0)
 
-    window.addEventListener('load',async _ => {
-        let video = document.querySelector('video')
-        if (!video) {
-            let i = 1;
-            while(i < 10 || !video) { // try it 10 times again...
-                video = await checkforVideo(i*500) // wait every time n*500ms
-                i++
-                if (video) break
-            }
-            if (!video) return
+        for (var i = 0; i < 10; i++) {
+            if (video) break
+            video = await checkforVideo(i*500) // wait every time n*500ms
         }
-        trackVideo()
-        video.addEventListener('loadedmetadata', trackVideo)
-    })
 
+        // Skip if no video found or dismiss rules...
+        if (video == null || video.duration <= MIN_VIDEO_LENGTH_SECONDS
+            || video.duration >= MAX_VIDEO_LENGTH_SECONDS
+            || isNaN(video.duration)) return
+
+        // get only first video on page
+        video = Array.isArray(video) ? video[0] : video
+
+        Video.init(video)
+        video.addEventListener('timeupdate', _ => {
+            Video.updateTime(video)
+        })
+
+        // change with ajax... do initiation again (start and video object)
+        // Listener for update can be the same...
+        video.addEventListener('loadedmetadata', _ => {
+            Video.init(video)
+        })
+    }
+    
     /**
      * 
      * @param {*} time 
@@ -26,7 +40,7 @@
      */
     let checkforVideo = (time) => new Promise(res => {
         setTimeout(_ => {
-            let video = document.querySelector('video')
+            let video = getVideo()
             res(video)
         }, time);
     })
@@ -35,14 +49,11 @@
      * 
      * @returns 
      */
-    let trackVideo = () => {
-        let video = document.querySelector('video')
-        if (!video) return
-        VideoObject.init(video, 0)
-
-        video.addEventListener('timeupdate', () => {
-            VideoObject.updateTime(video)
-        })
+    let getVideo = () => {
+        return document.querySelector('video')
     }
 
+    window.addEventListener('load', trackVideo)
+
+    
 })();

@@ -62,7 +62,7 @@ html, body {
 
 small {
     display:block;
-    margin-top:10px;
+    margin-top:15px;
     color:#C0C0C0;
     font-size:80%;
 }
@@ -100,7 +100,51 @@ ul.menu {
     text-decoration: none;
 }
 
-.menu a:hover, a:active {
+.menu a:hover {
     background:#bc1919;
     color:#fff;
+}
+
+h2 {
+    padding-top:15px;
+    font-weight:bold;
+}
+
+ul#video_history {
+    text-align: left;
+    font-size: 90%;
+}
+
+ul#video_history li {
+    padding:10px 12px;
+    margin-top:10px;
+    overflow:hidden;
+    position: relative;
+    background:#f0f0f0;
+    border-radius:5px;
+}
+
+ul#video_history li span.label {
+    position: relative;
+    z-index:999;
+}
+
+ul#video_history li span.progress {
+    z-index:0;
+    height:100%;
+    left:0;
+    top:0;
+    position:absolute;
+    background:#e1e1e1;
+    width:0%;
+}
+
+#video_history a, #video_history a:active, #video_history a:visited, #video_history a:hover {
+    color:inherit;
+    text-decoration: none;
+}
+
+.empty {
+    text-align: center;
+    font-style:italic;
 }

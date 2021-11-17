@@ -1,4 +1,7 @@
-const CACHE_DURATION = 365 * 24 * 3600 * 1000 // 7 days
+const CACHE_DURATION = 365 * 24 * 3600 * 1000 // 365 days
+const MIN_VIDEO_LENGTH_SECONDS = 30 // min 10 seconds
+const MAX_VIDEO_LENGTH_SECONDS = 86400 // max 24h
+
 const browserAPI = (typeof browser !== 'undefined') ? browser : chrome
 
 class Storage
@@ -6,7 +9,6 @@ class Storage
     static value(data, callback, retrying)
     {
         browserAPI.storage.local.get(data, (storageData) => {
-            this.cleanup()
             if (!browserAPI.runtime.lastError)
                 return callback(storageData);
             if (retrying)
@@ -17,7 +19,6 @@ class Storage
     static save(data, callback, retrying)
     {
         Object.keys(data).forEach(k => data[k].savedOn = Date.now());
-        this.cleanup()
         browserAPI.storage.local.set(data, () => {
             if (!browserAPI.runtime.lastError)
                 return callback();
@@ -39,9 +40,7 @@ class Storage
     {
         browserAPI.storage.local.get(null, all => {
             let keys = Object.keys(all).filter(k => k.startsWith('video-resumer'));
-            browserAPI.storage.local.remove(keys, () => {
-                //console.log("Alle Keys gelöscht...")
-            });
+            browserAPI.storage.local.remove(keys);
         });
     }
 

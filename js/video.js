@@ -1,70 +1,82 @@
-const MIN_VIDEO_LENGTH_SECONDS = 30 // min 10 seconds
-const MAX_VIDEO_LENGTH_SECONDS = 86400 // max 24h
 const END_VIDEO_SECONDS = 30 // 30 seconds
 
-class VideoObject
+class Video
 {
-    static init(current_video, index)
+    /**
+     * First initial call to load current state (if exist)
+     * 
+     * @param {*} current_video 
+     * @returns 
+     */
+    static init(current_video)
     {
-        VideoObject.title = document.title
-        VideoObject.url = window.location.href
-        VideoObject.index = index
+        Storage.cleanup()
+        
+        Video.title = document.title
+        Video.url = window.location.href
+        Video.duration = current_video.duration
 
-        let hash = this.getHash()
+        let hash = Video.getHash()
 
         Storage.value([hash], (data) => {
             let videoObj = data[hash]
-            if (videoObj) {
-                VideoObject.duration = videoObj.duration
-                VideoObject.currentTime =   ( 
-                                            current_video.duration >= MIN_VIDEO_LENGTH_SECONDS // Video minimum length
-                                            && current_video.duration <= MAX_VIDEO_LENGTH_SECONDS // Video maximal length (for live videos)
-                                            && current_video.currentTime <= (videoObj.duration - END_VIDEO_SECONDS) // Current length is lower than 30 seconds from end
-                                            && videoObj.url == videoObj.url
-                                            ) ? parseFloat(videoObj.currentTime) : 0
-            } else {
-                VideoObject.duration = current_video.duration
-                VideoObject.currentTime = 0
-            }
 
+            if (videoObj) { // video exist...
+                // return to last position
+                let current_time_is_to_end = (current_video.currentTime <= (videoObj.duration - END_VIDEO_SECONDS))
+                Video.currentTime = (current_time_is_to_end && videoObj.url == window.location.href) ? parseFloat(videoObj.currentTime) : 0
+                Video.savedOn = videoObj.created
+            } else {
+                // create video
+                Video.currentTime = 0
+                Video.savedOn = new Date().getTime()
+            }
             // Init video...
-            current_video.currentTime = VideoObject.currentTime
+            current_video.currentTime = Video.currentTime
         })
     }
 
+    /**
+     * 
+     * 
+     * @param {*} current_video 
+     * @returns 
+     */
     static getHash()
     {
-        return "video-resumer-" + MD5(VideoObject.title) + "-" + VideoObject.index
+        return "video-resumer-" + MD5(Video.title)
     }
 
+    /**
+     * 
+     * 
+     * @param {*} current_video 
+     * @returns 
+     */
     static getObject() {
         return {
-            currentTime : VideoObject.currentTime,
-            duration : VideoObject.duration,
-            title : VideoObject.title,
-            url : VideoObject.url,
-            index: VideoObject.index
+            currentTime : Video.currentTime,
+            duration : Video.duration,
+            title : Video.title,
+            url : Video.url,
+            savedOn: Video.savedOn
         }
     }
 
+    /**
+     * 
+     * 
+     * @param {*} current_video 
+     * @returns 
+     */
     static updateTime(video)
     {
-        if (!video && video.duration < MIN_VIDEO_LENGTH_SECONDS
-            || video.duration > MAX_VIDEO_LENGTH_SECONDS
-            || video.duration < VideoObject.duration) return
-
-        if (video.duration >= VideoObject.duration) {
-            VideoObject.currentTime = video.currentTime
-            VideoObject.duration = video.duration
+        if (video.currentTime > 0) {
+            Video.currentTime = video.currentTime
+            Storage.save({[Video.getHash()]:Video.getObject()}, _ => {
+                console.log(Video.getObject())
+            })
         }
-        
-        if (VideoObject.currentTime >= VideoObject.duration) {
-            VideoObject.currentTime = 0
-        }
-
-        Storage.save({[VideoObject.getHash()]:VideoObject.getObject()}, _ => {
-            //console.log("Save time...", VideoObject.currentTime)
-        })
     }
     
 }
