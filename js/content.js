@@ -51,6 +51,6 @@
         return document.querySelector('video')
     }
 
-    window.addEventListener('load', trackVideo)
+    //window.addEventListener('load', trackVideo)
     
 })();
