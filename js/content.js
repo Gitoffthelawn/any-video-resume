@@ -16,10 +16,8 @@
         // Skip if no video found or dismiss rules...
         if (video == null || video.duration <= MIN_VIDEO_LENGTH_SECONDS
             || video.duration >= MAX_VIDEO_LENGTH_SECONDS
-            || isNaN(video.duration)) {
-                return
-            }
-
+            || isNaN(video.duration)) return
+            
         // get only first video on page
         video = Array.isArray(video) ? video[0] : video
 
