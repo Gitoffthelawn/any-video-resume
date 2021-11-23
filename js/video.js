@@ -11,23 +11,21 @@ class Video
     static init(current_video)
     {
         Storage.cleanup()
-        
-        Video.title = document.title
-        Video.url = window.location.href
-        Video.duration = (current_video.duration >= Video.duration) ? current_video.duration : Video.duration
 
         let hash = Video.getHash()
+        Video.title = document.title
+        Video.url = window.location.href
+        Video.duration = current_video.duration
 
         Storage.value([hash], (data) => {
             let videoObj = data[hash]
 
             if (videoObj) { // video exist...
-                // return to last position
-                let current_time_is_to_end = (current_video.currentTime <= (videoObj.duration - END_VIDEO_SECONDS))
+                let current_time_is_to_end = (current_video.currentTime <= (videoObj.duration - END_VIDEO_SECONDS))                 // return to last position
                 Video.currentTime = (current_time_is_to_end && videoObj.url == window.location.href) ? parseFloat(videoObj.currentTime) : 0
                 Video.savedOn = videoObj.created
             } else {
-                // create video
+                // create video   
                 Video.currentTime = 0
                 Video.savedOn = new Date().getTime()
             }
@@ -44,7 +42,7 @@ class Video
      */
     static getHash()
     {
-        return "video-resumer-" + MD5(Video.title)
+        return "video-resumer-" + MD5(document.title)
     }
 
     /**

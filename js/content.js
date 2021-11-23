@@ -13,14 +13,12 @@
             video = await checkforVideo(i*500) // wait every time n*500ms
         }
 
-        // change video DOM async with ajax...
-        // listener for such updates -> trackVideo again...
-        video.addEventListener('loadedmetadata', trackVideo)
-
         // Skip if no video found or dismiss rules...
         if (video == null || video.duration <= MIN_VIDEO_LENGTH_SECONDS
             || video.duration >= MAX_VIDEO_LENGTH_SECONDS
-            || isNaN(video.duration)) return
+            || isNaN(video.duration)) {
+                return
+            }
 
         // get only first video on page
         video = Array.isArray(video) ? video[0] : video
@@ -29,6 +27,11 @@
         video.addEventListener('timeupdate', _ => {
             Video.updateTime(video)
         })
+
+        // change video DOM async with ajax...
+        // listener for such updates -> trackVideo again...
+        // Add after init load for first video...
+        video.addEventListener('loadedmetadata', trackVideo)
     }
     
     /**
@@ -51,6 +54,6 @@
         return document.querySelector('video')
     }
 
-    //window.addEventListener('load', trackVideo)
+    window.addEventListener('load', trackVideo)
     
 })();

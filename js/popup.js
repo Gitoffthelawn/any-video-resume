@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (delete_button !== null) {
         delete_button.addEventListener("click", () => {
-            count_video_dom = 0
+            count_video_dom.innerHTML = 0
             video_list_dom.innerHTML = no_videos_html
             Storage.cleanAll()
         })
