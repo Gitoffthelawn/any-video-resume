@@ -1,36 +1,55 @@
 const END_VIDEO_SECONDS = 30 // 30 seconds
 
-class Video
+class VideoTracker
 {
+    /**
+     * 
+     * 
+     * @param {*} current_video 
+     * @returns 
+     */
+     static getHash()
+     {
+         return "video-resumer-" + MD5(document.title)
+     }
+
     /**
      * First initial call to load current state (if exist)
      * 
      * @param {*} current_video 
      * @returns 
      */
-    static init(current_video)
+    static start(current_video)
     {
-        Storage.cleanup()
+        // Load or create video obj from storage...
+        let loadVideoObj = new Promise((resolve) => {
+            Storage.cleanup()
 
-        let hash = Video.getHash()
-        Video.title = document.title
-        Video.url = window.location.href
-        Video.duration = current_video.duration
+            Storage.value(VideoTracker.getHash(), (result) => {
+                let videoObj = result[VideoTracker.getHash()]
+                if (videoObj === undefined) { // video not exist...
+                    // create video
+                    videoObj = {
+                        currentTime : 0,
+                        duration : current_video.duration,
+                        title : document.title,
+                        url : window.location.href,
+                        savedOn: new Date().getTime()
+                    }
+                } else {
+                    // jump to last position
+                    let current_time_is_to_end = (current_video.currentTime <= (videoObj.duration - END_VIDEO_SECONDS))                 // return to last position
+                    current_video.currentTime = (current_time_is_to_end) ? parseFloat(videoObj.currentTime) : 0
+                }
+                resolve(videoObj)
+            })
+        })
 
-        Storage.value([hash], (data) => {
-            let videoObj = data[hash]
-
-            if (videoObj) { // video exist...
-                let current_time_is_to_end = (current_video.currentTime <= (videoObj.duration - END_VIDEO_SECONDS))                 // return to last position
-                Video.currentTime = (current_time_is_to_end && videoObj.url == window.location.href) ? parseFloat(videoObj.currentTime) : 0
-                Video.savedOn = videoObj.created
-            } else {
-                // create video   
-                Video.currentTime = 0
-                Video.savedOn = new Date().getTime()
-            }
-            // Init video...
-            current_video.currentTime = Video.currentTime
+        // ...then listen for change on this obj...
+        loadVideoObj.then((obj) => {
+            current_video.addEventListener('timeupdate', _ => {
+                VideoTracker.updateTime(current_video, obj)
+            })
         })
     }
 
@@ -40,39 +59,12 @@ class Video
      * @param {*} current_video 
      * @returns 
      */
-    static getHash()
+    static updateTime(current_video, obj)
     {
-        return "video-resumer-" + MD5(document.title)
-    }
-
-    /**
-     * 
-     * 
-     * @param {*} current_video 
-     * @returns 
-     */
-    static getObject() {
-        return {
-            currentTime : Video.currentTime,
-            duration : Video.duration,
-            title : Video.title,
-            url : Video.url,
-            savedOn: Video.savedOn
-        }
-    }
-
-    /**
-     * 
-     * 
-     * @param {*} current_video 
-     * @returns 
-     */
-    static updateTime(video)
-    {
-        if (video.duration >= Video.currentTime) {
-            Video.currentTime = video.currentTime
-            Video.duration = video.duration
-            Storage.save({[Video.getHash()]:Video.getObject()}, _ => {})
+        if (current_video.duration >= obj.currentTime) {
+            obj.currentTime = current_video.currentTime
+            obj.duration = current_video.duration
+            Storage.save({[VideoTracker.getHash()] : obj})
         }
     }
     

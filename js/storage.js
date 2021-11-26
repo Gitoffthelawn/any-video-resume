@@ -6,9 +6,9 @@ const browserAPI = (typeof browser !== 'undefined') ? browser : chrome
 
 class Storage
 {
-    static value(data, callback, retrying)
+    static value(key, callback, retrying)
     {
-        browserAPI.storage.local.get(data, (storageData) => {
+        browserAPI.storage.local.get([key], (storageData) => {
             if (!browserAPI.runtime.lastError)
                 return callback(storageData);
             if (retrying)
@@ -18,7 +18,6 @@ class Storage
 
     static save(data, callback, retrying)
     {
-        Object.keys(data).forEach(k => data[k].savedOn = Date.now());
         browserAPI.storage.local.set(data, () => {
             if (!browserAPI.runtime.lastError)
                 return callback();

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (count_video_dom) count_video_dom.innerHTML = Object.keys(data).length
         videos = Object.keys(data).map((k) => data[k]).sort((a, b) => b.savedOn - a.savedOn).slice(0,5)
 
-        if (videos.length > 0) {
+        if (videos.length > 0 && video_list_dom) {
             video_list_dom.innerHTML = ''
             videos.forEach((video) => {
                 percent = Math.floor(video.currentTime / video.duration * 100)
