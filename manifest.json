@@ -7,6 +7,9 @@
     "icons": {
       "48": "icons/logo-48.png"
     },
+    "background": {
+      "page": "./html/bg.html"
+    },
     "content_scripts": [
       {
         "matches": ["https://*/*"],

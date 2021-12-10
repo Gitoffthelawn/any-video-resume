@@ -1,6 +1,4 @@
 const CACHE_DURATION = 365 * 24 * 3600 * 1000 // 365 days
-const MIN_VIDEO_LENGTH_SECONDS = 60 // min 1 minute
-const MAX_VIDEO_LENGTH_SECONDS = 86400 // max 24h
 
 const browserAPI = (typeof browser !== 'undefined') ? browser : chrome
 
@@ -19,6 +17,16 @@ class Storage
     static save(data, callback, retrying)
     {
         browserAPI.storage.local.set(data, () => {
+            if (!browserAPI.runtime.lastError)
+                return callback();
+            if (retrying)
+                throw chrome.runtime.lastError.message;
+        });
+    }
+
+    static remove(data, callback, retrying)
+    {
+        browserAPI.storage.local.remove(data, () => {
             if (!browserAPI.runtime.lastError)
                 return callback();
             if (retrying)
